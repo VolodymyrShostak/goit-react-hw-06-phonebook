@@ -27,6 +27,7 @@ localStorage.setItem('contacts', JSON.stringify(contacts));
     }
     setContacts([{ name, number, id }, ...contacts]);
   };
+  
   const onDeleteContact = contId => {
     setContacts(
       contacts.filter(contact => contact.id !== contId),

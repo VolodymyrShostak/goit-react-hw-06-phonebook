@@ -11,11 +11,13 @@ export const personDataSlice = createSlice({
   initialState: initialContactList,
   reducers: {
    addContact: (state, action) => {
-      
+      state.push(action.payload);
     },
     deleteContact: (state, action) => {
-      
+       return state.filter(contact => contact.id !== action.payload);
     },
   },
 });
 export const { addContact, deleteContact } = personDataSlice.actions;
+
+
