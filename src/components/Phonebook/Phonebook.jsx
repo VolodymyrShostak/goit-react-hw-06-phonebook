@@ -1,4 +1,5 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
+
 
 import Form from './../Form/Form';
 import Filter from '../Filter/Filter';
@@ -27,7 +28,7 @@ localStorage.setItem('contacts', JSON.stringify(contacts));
     }
     setContacts([{ name, number, id }, ...contacts]);
   };
-  
+
   const onDeleteContact = contId => {
     setContacts(
       contacts.filter(contact => contact.id !== contId),

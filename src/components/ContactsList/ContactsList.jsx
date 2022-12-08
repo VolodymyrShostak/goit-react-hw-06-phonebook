@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 import { Button, Contact, ContactList } from './ContactList.styled.js';
 
-const ContactsList = ({ filter, contacts, onDeleteContact }) => {
+const ContactsList = ({ filter,  onDeleteContact }) => {
+  const contacts = useSelector(contacts => contacts)
  
   const normalizedFilter = filter.toLowerCase();
 

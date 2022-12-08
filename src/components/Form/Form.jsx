@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
+
 import { useDispatch } from 'react-redux';
 import { addContact } from '../.././redux/personDataSlice';
 
@@ -8,23 +8,13 @@ import { Title, Button, Input } from './Form.styled.js';
 export default function Form({ onSubmit: onAddContact }) {
   const dispatch = useDispatch();
 
-  // const onHandleChange = e => {
-
-  //           switch (name) {
-  //     case 'name': setName(value);
-  //       break;
-  //        case 'number': setNumber(value);
-  //       break;
-  //          default: return;
-  //   };
-
-  // }
+ 
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
-    const formName = e.target.elements.name.value;
-    const formNumber = e.target.elements.number.value;
-    dispatch(addContact( formName, formNumber, id: nanoid() ));
+    const nameForm = e.target.elements.name.value;
+    const numberForm = e.target.elements.number.value;
+  dispatch(addContact(nameForm, numberForm));
    form.reset();
   };
 
