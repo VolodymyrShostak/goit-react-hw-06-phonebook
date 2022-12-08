@@ -1,18 +1,22 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { Title, Input } from './Filter.styled.js';
+import { createFilter } from 'redux/filterSlise.js';
 
-const Filter = ({ title, value, onChange }) => {
+const Filter = () => {
+  const value = useSelector(({filter}) => filter)
   const dispatch = useDispatch();
+
     return (
       <>
-        <Title>{title}</Title>
+        <Title>Find contacts by name</Title>
         <Input
           type="text"
           name="filter"
           value={value}
-          onChange={onChange}
+          onChange={({ target: { value } }) => {
+            dispatch(createFilter(value));
+          }}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
@@ -21,9 +25,3 @@ const Filter = ({ title, value, onChange }) => {
     );
 }
 export default Filter;
-
-Filter.propTypes = {
-  title: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
