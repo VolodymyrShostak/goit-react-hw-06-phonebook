@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteContact } from 'redux/personDataSlice.js';
+
 
 import { Button, Contact, ContactList } from './ContactList.styled.js';
 
-const ContactsList = ({ filter,  onDeleteContact }) => {
+const ContactsList = () => {
+  const dispatch =useDispatch()
   const contacts = useSelector(contacts => contacts)
+  const filter = useSelector(filter => filter)
  
   const normalizedFilter = filter.toLowerCase();
 
@@ -17,7 +21,7 @@ const ContactsList = ({ filter,  onDeleteContact }) => {
       {visibleContacts.map(({ name, number, id }) => (
         <Contact key={id} id={id}>
           {name}: {number}
-          <Button onClick={() => onDeleteContact(id)}>Delete</Button>
+          <Button onClick={() => dispatch (deleteContact(id))}>Delete</Button>
         </Contact>
       ))}
     </ContactList>

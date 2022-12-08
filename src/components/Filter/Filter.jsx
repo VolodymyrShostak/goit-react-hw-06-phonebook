@@ -1,9 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-
 import { Title, Input } from './Filter.styled.js';
 
 const Filter = ({ title, value, onChange }) => {
+  const dispatch = useDispatch();
     return (
       <>
         <Title>{title}</Title>

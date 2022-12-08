@@ -37,7 +37,7 @@ export default function Form({ onSubmit: onAddContact }) {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
-        <Button type="submit">Add contact</Button>
+        <Button type="submit" >Add contact</Button>
       </form>
     </>
   );
